@@ -7,13 +7,16 @@
 </head>
 <body>
 <script type="text/javascript">
+    var oauthSession = {
+      session: <%- JSON.stringify(session) %>,
+      error: <%- JSON.stringify(error) %>,
+      link: <%- JSON.stringify(link) %>
+    };
+
     if (window.opener) {
         window.opener.focus();
-        var session = <%- JSON.stringify(session) %>;
-        var error = <%- JSON.stringify(error) %>;
-        var link = <%- JSON.stringify(link) %>;
         if (window.opener.superlogin && window.opener.superlogin.oauthSession) {
-            window.opener.superlogin.oauthSession(error, session, link);
+            window.opener.superlogin.oauthSession(oauthSession.error, oauthSession.session, oauthSession.link);
         }
     }
     window.close();

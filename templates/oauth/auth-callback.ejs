@@ -19,7 +19,7 @@
             window.opener.superlogin.oauthSession(oauthSession.error, oauthSession.session, oauthSession.link);
         }
     }
-    window.close();
+    try { window.close(); } catch (e) {}
 </script>
 </body>
 </html>
